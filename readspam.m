@@ -31,8 +31,9 @@ for j = 1:5
     if exist('OCTAVE_VERSION')
        fflush(stdout);
     end
-    fid = fopen(filepath);
+    fid = fopen(filepath, 'r');
     mail = strjoin(textscan(fid, '%s'){1,1});
+    fclose(fid);
     proc_mail = preproc(mail);
     data_cell{i + count} = proc_mail;
   end
